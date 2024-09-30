@@ -12,8 +12,8 @@ ECS_SYSTEM_DECLARE(PrintState);
 
 void PrintState(ecs_iter_t* it) 
 {
-	ecs_entity_t* pl_state = ecs_field(it, playerState, 0);
-
+	//ecs_entity_t* pl_state = ecs_field(it, playerState, 0);
+	//const ecs_type_t* type = ecs_get_type();
 }
 
 void PlayerStateImport(ecs_world_t* world) 
