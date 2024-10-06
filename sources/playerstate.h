@@ -9,8 +9,9 @@ extern ECS_TAG_DECLARE(SKID);
 extern ECS_TAG_DECLARE(SPINDASH);
 extern ECS_TAG_DECLARE(ROLL);
 extern ECS_TAG_DECLARE(AIRBORNE);
+extern ECS_TAG_DECLARE(HURT);
 
-extern ECS_SYSTEM_DECLARE(PrintState);
+void PrintPlayerState(ecs_iter_t* it);
+extern ECS_SYSTEM_DECLARE(PrintPlayerState);
 
-void PrintState(ecs_iter_t* it);
-void PlayerStateImport(ecs_world_t* world);
+void PlayerStateComponentImport(ecs_world_t* world);

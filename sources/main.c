@@ -5,6 +5,17 @@
 
 #define WINDOW_TITLE "SONK REWRITE"
 
+void GraphicsBegin(ecs_iter_t *it) 
+{
+    BeginDrawing();
+    ClearBackground(RAYWHITE);
+}
+
+void GraphicsEnd(ecs_iter_t* it)
+{
+    EndDrawing();
+}
+
 int main(void)
 {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE);
@@ -12,20 +23,16 @@ int main(void)
 
     ecs_world_t* world = ecs_init();
 
-    ECS_IMPORT(world, PlayerState);
+    ECS_SYSTEM(world, GraphicsBegin, EcsOnUpdate, 0);
+    ECS_IMPORT(world, PlayerStateComponent);
+    ECS_SYSTEM(world, GraphicsEnd, EcsOnUpdate, 0);
 
     ecs_entity_t player = ecs_entity(world, { .name = "SONK" });
     ecs_add_pair(world, player, playerState, IDLE);
 
-    //ecs_query_t* q = ecs_query(world, { .terms = { { .id = ecs_pair(playerState, IDLE) } } });
-
     while (!WindowShouldClose())
     {
-        
         ecs_progress(world, GetFrameTime());
-        BeginDrawing();
-			ClearBackground(RAYWHITE);
-        EndDrawing();
     }
 
     ecs_fini(world);
