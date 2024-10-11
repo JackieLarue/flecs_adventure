@@ -59,3 +59,19 @@ typedef struct TimersAndSuch
 	float rail_trick;
 	float spindash_speed;
 } TimersAndSuch;
+
+//player phys entity
+//speed
+//pos
+//ang
+//dotp
+//wall_normal
+//floor_normal
+//last_up
+//grounded
+//last_turn
+//collider
+
+extern ECS_COMPONENT_DECLARE(player_parameter);
+extern ECS_COMPONENT_DECLARE(spin_parameter);
+extern ECS_COMPONENT_DECLARE(TimersAndSuch);
