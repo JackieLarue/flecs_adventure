@@ -2,41 +2,42 @@
 
 #include "main.h"
 
+//going to switch z and x values for all the code to translate it for z-forward axises
 typedef struct player_parameter
 {
-	int jump2_timer;
-	float pos_error;
-	float lim_h_spd;
-	float lim_v_spd;
-	float max_x_spd;
-	float max_psh_spd;
-	float jmp_y_spd;
-	float nocon_speed;
-	float slide_speed;
-	float jog_speed;
-	float run_speed;
-	float rush_speed;
-	float crash_speed;
-	float dash_speed;
-	float jmp_addit;
+	int jump2_timer;      //how long in frames can player character "hang" in air while jumping
+	float pos_error;      //amount of grip on floor or smthn
+	float lim_h_spd;      //hard limit horizontal speed cap
+	float lim_v_spd;      //hard limit vertical speed cap
+	float max_z_spd;      //"soft" horizontal speed cap
+	float max_psh_spd;    //max push object speed
+	float jmp_y_spd;      //initial jump speed
+	float nocon_speed;    //nocontrol i.e spring speed
+	float slide_speed;    //slide speed (lost world slide?)
+	float jog_speed;      //rolling cancel speed as well
+	float run_speed;      //rolling end speed as well
+	float rush_speed;     //(normal run speed methinks)
+	float crash_speed;    //min speed to get knocked back when hitting wall, affects pushing speed too?
+	float dash_speed;     //normally shouldn't be at this speed, but if you are, sonic gets some top speed anim and steering is hard
+	float jmp_addit;      //speed added when holding jump
 	float run_accel;
 	float air_accel;
-	float slow_down;
-	float run_break;
-	float air_break;
-	float air_resist_air;
-	float air_resist;
-	float air_resist_y;
-	float air_resist_z;
-	float grd_frict;
-	float grd_frict_z;
-	float lim_frict;
-	float rat_bound;
-	float rad;
-	float height;
-	float weight;
-	float eyes_height;
-	float center_height;
+	float slow_down;      //ground decel
+	float run_break;      //ground brake speed
+	float air_break;      //air brake speed
+	float air_resist_air; //air decel coefficient
+	float air_resist;     //rolling decel coefficient (in air too) (called air_resist. gosh, ain't that confusing naming?)
+	float air_resist_y;   //air drag coefficient for y_spd
+	float air_resist_x;   //air drag coefficient for x_spd
+	float grd_frict;      //min speed before stopping, affects spindash charging and braking
+	float grd_frict_x;    //affects movement on sloped surfaces
+	float lim_frict;      //multiplied with gravity accel for air control/brake i think? - i think this is kinda grd_frict counterpart
+	float rat_bound;      //idk lol
+	float rad;            //probably collision radius, refered to as "RippleSize" on Sonic Retro
+	float height;         //player collision height
+	float weight;         //called "weight", technically gravity scales with this value, i.e "heavier" characters fall faster. kinda funny
+	float eyes_height;    //camera y offset
+	float center_height;  //center y offset of player
 } player_parameter;
 
 typedef struct spin_parameter 
@@ -47,7 +48,7 @@ typedef struct spin_parameter
 	float spin_addit;
 } spin_parameter;
 
-typedef Vector3 speed;
+typedef Vector3 speed, position, wall_normal, floor_normal, last_up;
 
 typedef struct TimersAndSuch
 {
