@@ -6,7 +6,7 @@
 typedef struct player_parameter
 {
 	int jump2_timer;      //how long in frames can player character "hang" in air while jumping
-	float pos_error;      //amount of grip on floor or smthn
+	float pos_error;      //"collision resolution difference" - if player is within this measurement when going down slope, snap to ground
 	float lim_h_spd;      //hard limit horizontal speed cap
 	float lim_v_spd;      //hard limit vertical speed cap
 	float max_z_spd;      //"soft" horizontal speed cap
@@ -18,7 +18,7 @@ typedef struct player_parameter
 	float run_speed;      //rolling end speed as well
 	float rush_speed;     //(normal run speed methinks)
 	float crash_speed;    //min speed to get knocked back when hitting wall, affects pushing speed too?
-	float dash_speed;     //normally shouldn't be at this speed, but if you are, sonic gets some top speed anim and steering is hard
+	float dash_speed;     //normally shouldn't be at this speed, but if you are, player character gets some top speed anim and steering is hard
 	float jmp_addit;      //speed added when holding jump
 	float run_accel;
 	float air_accel;
@@ -27,13 +27,13 @@ typedef struct player_parameter
 	float air_break;      //air brake speed
 	float air_resist_air; //air decel coefficient
 	float air_resist;     //rolling decel coefficient (in air too) (called air_resist. gosh, ain't that confusing naming?)
-	float air_resist_y;   //air drag coefficient for y_spd
-	float air_resist_x;   //air drag coefficient for x_spd
+	float air_resist_y;   //air decel coefficient for y_spd
+	float air_resist_x;   //air decel coefficient for x_spd
 	float grd_frict;      //min speed before stopping, affects spindash charging and braking
 	float grd_frict_x;    //affects movement on sloped surfaces
 	float lim_frict;      //multiplied with gravity accel for air control/brake i think? - i think this is kinda grd_frict counterpart
-	float rat_bound;      //idk lol
-	float rad;            //probably collision radius, refered to as "RippleSize" on Sonic Retro
+	float rat_bound;      //unused???????
+	float rad;            //collision radius
 	float height;         //player collision height
 	float weight;         //called "weight", technically gravity scales with this value, i.e "heavier" characters fall faster. kinda funny
 	float eyes_height;    //camera y offset
