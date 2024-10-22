@@ -73,6 +73,10 @@ typedef struct TimersAndSuch
 //last_turn
 //collider
 
+void UpdatePosition(ecs_iter_t* it);
+
 extern ECS_COMPONENT_DECLARE(player_parameter);
 extern ECS_COMPONENT_DECLARE(spin_parameter);
 extern ECS_COMPONENT_DECLARE(TimersAndSuch);
+
+extern ECS_SYSTEM_DECLARE(UpdatePosition);
