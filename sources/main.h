@@ -1,9 +1,12 @@
 #pragma once
 
 #include <raylib.h>
+#include <raymath.h>
 #include <flecs.h>
 
 #include "playerstate.h"
+#include "playerphys.h"
+#include "basic_components.h"
 
 /*typedef struct playerwk
 {

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "main.h"
+#include "basic_components.h"
 
 //going to switch z and x values for all the code to translate it for z-forward axises
 typedef struct player_parameter
@@ -48,18 +49,18 @@ typedef struct spin_parameter
 	float spin_addit;
 } spin_parameter;
 
-typedef Vector3 speed, position, wall_normal, floor_normal, last_up;
+typedef Vector3 wall_normal, floor_normal, last_up;
 
-typedef struct TimersAndSuch
+typedef struct player_counters
 {
 	int jump_timer;
-	float spring_timer;
-	float dashpanel_timer;
-	float dashring_timer;
-	float rail_debounce;
-	float rail_trick;
+	//float spring_timer;
+	//float dashpanel_timer;
+	//float dashring_timer;
+	//float rail_debounce;
+	//float rail_trick;
 	float spindash_speed;
-} TimersAndSuch;
+} player_counters;
 
 //player phys entity
 //speed
@@ -77,6 +78,6 @@ void UpdatePosition(ecs_iter_t* it);
 
 extern ECS_COMPONENT_DECLARE(player_parameter);
 extern ECS_COMPONENT_DECLARE(spin_parameter);
-extern ECS_COMPONENT_DECLARE(TimersAndSuch);
+extern ECS_COMPONENT_DECLARE(player_counters);
 
 extern ECS_SYSTEM_DECLARE(UpdatePosition);
