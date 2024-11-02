@@ -1,6 +1,6 @@
 #pragma once
 
-#include "main.h"
+#include <raylib.h>
 
 extern ECS_ENTITY_DECLARE(playerState);
 extern ECS_TAG_DECLARE(IDLE);

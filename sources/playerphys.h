@@ -1,6 +1,5 @@
 #pragma once
 
-#include "main.h"
 #include "basic_components.h"
 
 //going to switch z and x values for all the code to translate it for z-forward axises

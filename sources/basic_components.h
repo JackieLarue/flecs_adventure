@@ -1,6 +1,6 @@
 #pragma once 
 
-#include "main.h"
+#include <raylib.h>
 
 typedef Vector3 velocity, position;
 
