@@ -1,6 +1,7 @@
 #pragma once 
 
 #include <raylib.h>
+#include <flecs.h>
 
 typedef Vector3 velocity, position;
 
